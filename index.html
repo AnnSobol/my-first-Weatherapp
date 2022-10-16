@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Weather</title>
+    <link rel="icon" href="pic/favicon.png" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="cities">
+          <ul class="nav_list">
+            <li class="nav_item">
+              <a href="" class="nav_link" id="kyiv">🇺🇦Kyiv</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link" id="madrid">🇪🇸Madrid</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link" id="paris">🇫🇷Paris</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link" id="amsterdam">🇳🇱Amsterdam</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link" id="berlin">🇩🇪Berlin</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link" id="vienna">🇦🇹Vienna</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link" id="prague">🇨🇿Prague</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <form id="form" action="" method="get">
+          <input
+            type="text"
+            class="search-field"
+            placeholder="Enter city here"
+            autocomplete="off"
+            autofocus="on"
+            id="search-text"
+          />
+          <input
+            id="submit "
+            type="submit"
+            class="button-container"
+            value="🔎 Search"
+          />
+          <input type="button" id="location" value="My weather" />
+        </form>
+        <div class="row">
+          <div class="current-day">
+            <div class="current-city">
+              <h1 id="city"></h1>
+              <br />
+              <span class="day-time" id="dayTime"></span>
+              <hr />
+              <h2>
+                <strong id="degrees"></strong>
+                <a class="celcium" href="%">℃ </a> |
+                <a class="farenheit" href="%">ºF</a>
+              </h2>
+            </div>
+            <div class="about">
+              <h3 id="description"></h3>
+              <img src="" alt="" />
+              <br />
+              <small>*Don't forget your sunglasses 😎</small>
+            </div>
+          </div>
+          <div class="more-info">
+            <span>Wind: <strong class="wind">km/h</strong></span>
+            <span>Humidity: <strong class="humidity">%</strong></span>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="card text-white bg-info mb-3 window"
+            style="max-width: 18rem"
+          >
+            <div class="card-header">Monday</div>
+            <div class="card-body">
+              <h5 class="card-title">18º / 26º</h5>
+              <p class="card-text">🌤</p>
+            </div>
+          </div>
+          <div
+            class="card text-white bg-info mb-3 window"
+            style="max-width: 18rem"
+          >
+            <div class="card-header">Tuesday</div>
+            <div class="card-body">
+              <h5 class="card-title">18º / 26º</h5>
+              <p class="card-text">⛈</p>
+            </div>
+          </div>
+          <div
+            class="card text-white bg-info mb-3 window"
+            style="max-width: 18rem"
+          >
+            <div class="card-header">Wednesday</div>
+            <div class="card-body">
+              <h5 class="card-title">18º / 26º</h5>
+              <p class="card-text">⛅️</p>
+            </div>
+          </div>
+          <div
+            class="card text-white bg-info mb-3 window"
+            style="max-width: 18rem"
+          >
+            <div class="card-header">Thursday</div>
+            <div class="card-body">
+              <h5 class="card-title">18º / 26º</h5>
+              <p class="card-text">☀️</p>
+            </div>
+          </div>
+          <div
+            class="card text-white bg-info mb-3 window"
+            style="max-width: 18rem"
+          >
+            <div class="card-header">Friday</div>
+            <div class="card-body">
+              <h5 class="card-title">18º / 26º</h5>
+              <p class="card-text">⛅️</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="src/action.js"></script>
+  </body>
+</html>
