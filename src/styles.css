@@ -251,3 +251,15 @@ img {
 #location:active {
   top: 1px;
 }
+.source-code {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+.my-name {
+  font-family: monospace;
+}
+
+.github {
+  text-decoration: none;
+}
