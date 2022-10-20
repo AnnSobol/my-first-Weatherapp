@@ -29,7 +29,7 @@ celcium.addEventListener("click", getCelcium);
 
 function getFahrenheit(event) {
   event.preventDefault();
-  let temp = document.querySelector("#degrees");
+  let temp = document.querySelector(".degrees");
   let currentTemp = 26;
   temp.innerHTML = (currentTemp * 9) / 5 + 32;
 }
@@ -67,7 +67,7 @@ function displayWeather(city) {
 
 function getTemp(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#degrees").innerHTML = Math.round(
+  document.querySelector(".degrees").innerHTML = Math.round(
     response.data.main.temp
   );
   document.querySelector(".wind").innerHTML = `${Math.round(

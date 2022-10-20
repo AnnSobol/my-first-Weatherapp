@@ -5,13 +5,16 @@ h1 {
   display: inline-block;
   padding: 5px 5px 0;
   margin: 0;
-  text-shadow: 1px 2px 2px lightgrey;
+  text-shadow: 1px 2px 2px grey;
+  color: rgb(70, 70, 70);
 }
 h2 {
   display: inline-block;
   padding: 5px 15px 0;
   margin: 0 auto;
   font-size: 40px;
+  color: rgb(70, 70, 70);
+  font-weight: bold;
 }
 h3 {
   text-align: center;
@@ -31,6 +34,10 @@ img {
   width: 100px;
 }
 
+li {
+  list-style: none;
+  padding: 5px;
+}
 .container {
   max-width: 1000px;
   border-radius: 15px;
@@ -60,6 +67,9 @@ img {
 .day-time {
   display: inline-block;
   padding: 0 6px 5px;
+  color: #fff;
+
+  text-shadow: 2px 2px 3px rgb(135, 135, 135);
 }
 .description {
   display: inline-block;
@@ -69,7 +79,7 @@ img {
   display: inline-block;
   border: 1px solid transparent;
   width: 18em;
-  padding: 5px;
+  padding: 20px 10px 10px;
   border-radius: 15px;
   margin-left: 50px;
 }
@@ -262,4 +272,39 @@ img {
 
 .github {
   text-decoration: none;
+}
+.degrees {
+  color: rgb(70, 70, 70);
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+}
+.units {
+  position: relative;
+  font-size: 16px;
+  top: -18px;
+}
+.units:hover {
+  color: #0b58ca;
+  text-shadow: none;
+}
+
+.celcium {
+  color: rgb(70, 70, 70);
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+.celcium:hover {
+  color: #0b58ca;
+  text-shadow: none;
+}
+
+.farenheit {
+  color: rgb(70, 70, 70);
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+.farenheit:hover {
+  color: #0b58ca;
+  text-shadow: none;
 }
