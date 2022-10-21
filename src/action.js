@@ -59,27 +59,32 @@ function getCityResponse(event) {
 }
 
 function displayWeather(city) {
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
-
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getTemp);
 }
 
 function getTemp(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector(".degrees").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
+
   document.querySelector(".wind").innerHTML = `${Math.round(
     response.data.wind.speed
   )} km\\h`;
   document.querySelector(
     ".humidity"
-  ).innerHTML = `${response.data.main.humidity}%`;
+  ).innerHTML = `${response.data.temperature.humidity}%`;
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
   let timeNow = document.querySelector("#dayTime");
-  timeNow.innerHTML = dayTime(response.data.dt * 1000);
+  timeNow.innerHTML = dayTime(response.data.time * 1000);
+
+  icon.setAttribute(
+    "src",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+  );
 }
 
 let myWeatherButton = document.querySelector("#location");
@@ -93,8 +98,8 @@ function getCurrentLocation(event) {
 function getCoordinates(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
   axios.get(apiUrl).then(getTemp);
 }
 
@@ -102,10 +107,10 @@ function showKyiv(event) {
   event.preventDefault();
   let h1 = document.querySelector("#city");
   h1.innerHTML = "Kyiv";
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=kyiv&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=kyiv&key=${apiKey}&units=metric`;
 
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  axios.get(apiUrl).then(getTemp);
 }
 let kyiv = document.querySelector("#kyiv");
 kyiv.addEventListener("click", showKyiv);
@@ -114,10 +119,10 @@ function showMadrid(event) {
   event.preventDefault();
   let h1 = document.querySelector("#city");
   h1.innerHTML = "Madrid";
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=madrid&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=madrid&key=${apiKey}&units=metric`;
 
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  axios.get(apiUrl).then(getTemp);
 }
 
 let madrid = document.querySelector("#madrid");
@@ -127,10 +132,10 @@ function showParis(event) {
   event.preventDefault();
   let h1 = document.querySelector("#city");
   h1.innerHTML = "Paris";
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=paris&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=paris&key=${apiKey}&units=metric`;
 
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  axios.get(apiUrl).then(getTemp);
 }
 let paris = document.querySelector("#paris");
 paris.addEventListener("click", showParis);
@@ -139,10 +144,10 @@ function showAmsterdam(event) {
   event.preventDefault();
   let h1 = document.querySelector("#city");
   h1.innerHTML = "Amsterdam";
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=amsterdam&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=amsterdam&key=${apiKey}&units=metric`;
 
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  axios.get(apiUrl).then(getTemp);
 }
 let amsterdam = document.querySelector("#amsterdam");
 amsterdam.addEventListener("click", showAmsterdam);
@@ -151,10 +156,10 @@ function showBerlin(event) {
   event.preventDefault();
   let h1 = document.querySelector("#city");
   h1.innerHTML = "Berlin";
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=berlin&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=berlin&key=${apiKey}&units=metric`;
 
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  axios.get(apiUrl).then(getTemp);
 }
 let berlin = document.querySelector("#berlin");
 berlin.addEventListener("click", showBerlin);
@@ -163,10 +168,10 @@ function showVienna(event) {
   event.preventDefault();
   let h1 = document.querySelector("#city");
   h1.innerHTML = "Vienna";
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=vienna&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=vienna&key=${apiKey}&units=metric`;
 
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  axios.get(apiUrl).then(getTemp);
 }
 let vienna = document.querySelector("#vienna");
 vienna.addEventListener("click", showVienna);
@@ -175,10 +180,10 @@ function showPrague(event) {
   event.preventDefault();
   let h1 = document.querySelector("#city");
   h1.innerHTML = "Prague";
-  let apiKey = "8944afa6845bd7c413a687258d3211ef";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=prague&units=metric`;
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=prague&key=${apiKey}&units=metric`;
 
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemp);
+  axios.get(apiUrl).then(getTemp);
 }
 let prague = document.querySelector("#prague");
 prague.addEventListener("click", showPrague);
