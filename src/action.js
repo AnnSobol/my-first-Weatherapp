@@ -1,22 +1,22 @@
-let dateTime = new Date();
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let currentDay = days[dateTime.getDay()];
-let currentHour = dateTime.getHours();
-let currentMinutes = dateTime.getMinutes();
-currentMinutes = currentMinutes > 9 ? currentMinutes : "0" + currentMinutes;
-
-dateTime = `${currentDay}, ${currentHour}:${currentMinutes}`;
-
-let timeNow = document.querySelector("#dayTime");
-timeNow.innerHTML = dateTime;
+function dayTime(timestamp) {
+  let dateTime = new Date(timestamp);
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let currentDay = days[dateTime.getDay()];
+  let currentHour = dateTime.getHours();
+  currentHour = currentHour > 9 ? currentHour : "0" + currentHour;
+  let currentMinutes = dateTime.getMinutes();
+  currentMinutes = currentMinutes > 9 ? currentMinutes : "0" + currentMinutes;
+  dateTime = `${currentDay}, ${currentHour}:${currentMinutes}`;
+  return dateTime;
+}
 
 let celcium = document.querySelector(".celcium");
 let fahrenheit = document.querySelector(".farenheit");
@@ -78,6 +78,8 @@ function getTemp(response) {
   ).innerHTML = `${response.data.main.humidity}%`;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+  let timeNow = document.querySelector("#dayTime");
+  timeNow.innerHTML = dayTime(response.data.dt * 1000);
 }
 
 let myWeatherButton = document.querySelector("#location");
