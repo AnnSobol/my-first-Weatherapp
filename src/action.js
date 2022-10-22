@@ -83,8 +83,9 @@ function getTemp(response) {
 
   icon.setAttribute(
     "src",
-    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
+  icon.setAttribute("alt", response.data.condition.description);
 }
 
 let myWeatherButton = document.querySelector("#location");
