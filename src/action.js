@@ -10,14 +10,14 @@ function dayTime(timestamp) {
     "Saturday",
   ];
   let currentDay = days[dateTime.getDay()];
-  let currentHour = dateTime.getHours();
+  currentHour = dateTime.getHours();
   currentHour = currentHour > 9 ? currentHour : "0" + currentHour;
   let currentMinutes = dateTime.getMinutes();
   currentMinutes = currentMinutes > 9 ? currentMinutes : "0" + currentMinutes;
   dateTime = `${currentDay}, ${currentHour}:${currentMinutes}`;
   return dateTime;
 }
-
+let currentHour;
 let cel = document.querySelector("#cel");
 let far = document.querySelector("#far");
 cel.addEventListener("click", getCelsium);
@@ -105,6 +105,36 @@ function getTemp(response) {
 
   let timeNow = document.querySelector("#dayTime");
   timeNow.innerHTML = dayTime(response.data.time * 1000);
+  if (celsiumElement > 24 && currentHour < 22) {
+    cats.setAttribute("src", "pic/catHot.png");
+  }
+  if (currentHour >= 22 || currentHour <= 6) {
+    cats.setAttribute("src", "pic/catSleep.png");
+  }
+  if (currentHour > 6 && currentHour < 8) {
+    cats.setAttribute("src", "pic/catMorning.png");
+  }
+  if (currentHour >= 8 && currentHour < 10) {
+    cats.setAttribute("src", "pic/catsBreakfast.png");
+  }
+  if (currentHour >= 10 && currentHour < 12) {
+    cats.setAttribute("src", "pic/catCoffe.png");
+  }
+  if (currentHour >= 12 && currentHour < 14) {
+    cats.setAttribute("src", "pic/catWorks.png");
+  }
+  if (currentHour >= 14 && currentHour < 16) {
+    cats.setAttribute("src", "pic/catsLunch.png");
+  }
+  if (currentHour >= 16 && currentHour < 18) {
+    cats.setAttribute("src", "pic/catWorks.png");
+  }
+  if (currentHour >= 18 && currentHour < 20) {
+    cats.setAttribute("src", "pic/catHome.png");
+  }
+  if (currentHour >= 20 && currentHour < 22) {
+    cats.setAttribute("src", "pic/catDinner.png");
+  }
 
   icon.setAttribute(
     "src",
