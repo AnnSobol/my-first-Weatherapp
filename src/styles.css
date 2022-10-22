@@ -302,3 +302,15 @@ li {
   color: #0b58ca;
   text-shadow: none;
 }
+
+.about {
+  padding-left: 30px;
+  text-align: center;
+}
+
+.temp-feeling {
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 0;
+  margin-right: 0;
+}

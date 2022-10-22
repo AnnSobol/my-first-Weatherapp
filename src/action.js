@@ -18,25 +18,42 @@ function dayTime(timestamp) {
   return dateTime;
 }
 
+let cel = document.querySelector("#cel");
+let far = document.querySelector("#far");
+cel.addEventListener("click", getCelsium);
+far.addEventListener("click", getFahrenheit);
+
+let celElement;
 let celsiumElement;
 let celsium = document.querySelector("#celcium");
 let fahrenheit = document.querySelector("#farenheit");
+
 function getCelsium(event) {
   event.preventDefault();
   celsium.classList.add("activ");
+  cel.classList.add("activ");
+  far.classList.remove("activ");
   fahrenheit.classList.remove("activ");
   let temp = document.querySelector(".degrees");
   temp.innerHTML = Math.round(celsiumElement);
+  let realFeelTemp = document.querySelector(".temp-feeling");
+  realFeelTemp.innerHTML = celElement;
 }
+
 celsium.addEventListener("click", getCelsium);
 
 function getFahrenheit(event) {
   event.preventDefault();
+  cel.classList.remove("activ");
+  far.classList.add("activ");
   celsium.classList.remove("activ");
   fahrenheit.classList.add("activ");
   let temp = document.querySelector(".degrees");
   temp.innerHTML = Math.round((celsiumElement * 9) / 5 + 32);
+  let realFeelTemp = document.querySelector(".temp-feeling");
+  realFeelTemp.innerHTML = Math.round((celElement * 9) / 5 + 32);
 }
+
 fahrenheit.addEventListener("click", getFahrenheit);
 
 let form = document.querySelector("#form");
@@ -74,6 +91,7 @@ function getTemp(response) {
     response.data.temperature.current
   );
   celsiumElement = Math.round(response.data.temperature.current);
+  celElement = Math.round(response.data.temperature.feels_like);
   document.querySelector(".wind").innerHTML = `${Math.round(
     response.data.wind.speed
   )} km\\h`;
@@ -82,6 +100,9 @@ function getTemp(response) {
   ).innerHTML = `${response.data.temperature.humidity}%`;
   document.querySelector("#description").innerHTML =
     response.data.condition.description;
+  let realFeel = document.querySelector(".temp-feeling");
+  realFeel.innerHTML = Math.round(response.data.temperature.feels_like);
+
   let timeNow = document.querySelector("#dayTime");
   timeNow.innerHTML = dayTime(response.data.time * 1000);
 
