@@ -18,20 +18,24 @@ function dayTime(timestamp) {
   return dateTime;
 }
 
-let celcium = document.querySelector(".celcium");
-let fahrenheit = document.querySelector(".farenheit");
-function getCelcium(event) {
+let celsiumElement;
+let celsium = document.querySelector("#celcium");
+let fahrenheit = document.querySelector("#farenheit");
+function getCelsium(event) {
   event.preventDefault();
-  let temp = document.querySelector("strong");
-  temp.innerHTML = 24;
+  celsium.classList.add("activ");
+  fahrenheit.classList.remove("activ");
+  let temp = document.querySelector(".degrees");
+  temp.innerHTML = Math.round(celsiumElement);
 }
-celcium.addEventListener("click", getCelcium);
+celsium.addEventListener("click", getCelsium);
 
 function getFahrenheit(event) {
   event.preventDefault();
+  celsium.classList.remove("activ");
+  fahrenheit.classList.add("activ");
   let temp = document.querySelector(".degrees");
-  let currentTemp = 26;
-  temp.innerHTML = (currentTemp * 9) / 5 + 32;
+  temp.innerHTML = Math.round((celsiumElement * 9) / 5 + 32);
 }
 fahrenheit.addEventListener("click", getFahrenheit);
 
@@ -69,7 +73,7 @@ function getTemp(response) {
   document.querySelector(".degrees").innerHTML = Math.round(
     response.data.temperature.current
   );
-
+  celsiumElement = Math.round(response.data.temperature.current);
   document.querySelector(".wind").innerHTML = `${Math.round(
     response.data.wind.speed
   )} km\\h`;

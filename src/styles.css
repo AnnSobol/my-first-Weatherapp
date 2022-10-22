@@ -292,22 +292,13 @@ li {
   text-shadow: none;
 }
 
-.celcium {
+.activ {
   color: rgb(70, 70, 70);
   text-decoration: none;
   transition: all 200ms ease-in-out;
+  cursor: default;
 }
-.celcium:hover {
-  color: #0b58ca;
-  text-shadow: none;
-}
-
-.farenheit {
-  color: rgb(70, 70, 70);
-  text-decoration: none;
-  transition: all 200ms ease-in-out;
-}
-.farenheit:hover {
+.activ:hover {
   color: #0b58ca;
   text-shadow: none;
 }
