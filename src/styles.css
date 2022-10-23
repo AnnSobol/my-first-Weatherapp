@@ -339,3 +339,27 @@ span.min {
 div.day-forecast {
   margin: 20px 15px 0;
 }
+.forecast-description {
+  display: inline-block;
+  text-align: center;
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+}
+.forecast-description::first-letter {
+  text-transform: capitalize;
+}
+.forecast-icon {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+p.card-text {
+  margin: 0;
+}
+h5.card-title {
+  margin: 0;
+}
+div.card-body {
+  padding: 8px;
+}

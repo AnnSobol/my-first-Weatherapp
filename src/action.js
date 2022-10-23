@@ -85,6 +85,70 @@ function displayWeather(city) {
   axios.get(apiUrl).then(getTemp);
 }
 
+function getForecast(city) {
+  console.log(city);
+  let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
+
+function showForecast(response) {
+  let forecastArray = response.data.daily;
+  let forecastHtml = `<div class="row">`;
+  let forecast = document.querySelector("#weather-forecast");
+  console.log(forecastArray[0].time);
+
+  forecastArray.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        ` <div class="card text-white bg-info mb-3 window day-forecast"
+              style="max-width: 10.5rem"
+            >
+              <div class="card-header">${formatForecastDay(
+                forecastDay.time
+              )}</div>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <span class="min">${Math.round(
+                    forecastDay.temperature.minimum
+                  )}º </span> / <span class="max">${Math.round(
+          forecastDay.temperature.maximum
+        )}º</span>
+                </h5>
+                <p class="card-text"><img class="forecast-icon" src="${
+                  forecastDay.condition.icon_url
+                }" alt="${forecastDay.condition.icon}" /></p>
+                <small class="forecast-description">*${
+                  forecastDay.condition.description
+                }</small>
+              </div>
+            </div>
+          `;
+    }
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecast.innerHTML = forecastHtml;
+}
+
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  console.log(day);
+  return days[day];
+}
+
 function getTemp(response) {
   document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector(".degrees").innerHTML = Math.round(
@@ -102,6 +166,8 @@ function getTemp(response) {
     response.data.condition.description;
   let realFeel = document.querySelector(".temp-feeling");
   realFeel.innerHTML = Math.round(response.data.temperature.feels_like);
+
+  getForecast(response.data.city);
 
   let timeNow = document.querySelector("#dayTime");
   timeNow.innerHTML = dayTime(response.data.time * 1000);
@@ -243,29 +309,3 @@ function showPrague(event) {
 }
 let prague = document.querySelector("#prague");
 prague.addEventListener("click", showPrague);
-
-function showForecast() {
-  let forecastHtml = `<div class="row">`;
-  let forecast = document.querySelector("#weather-forecast");
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      ` <div class="card text-white bg-info mb-3 window day-forecast"
-              style="max-width: 10.5rem"
-            >
-              <div class="card-header">${day}</div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  <span class="min">18º </span> / <span class="max">26º</span>
-                </h5>
-                <p class="card-text">🌤</p>
-              </div>
-            </div>
-          `;
-  });
-
-  forecastHtml = forecastHtml + `</div>`;
-  forecast.innerHTML = forecastHtml;
-}
-showForecast();
