@@ -86,17 +86,17 @@ function displayWeather(city) {
 }
 
 function getForecast(city) {
-  console.log(city);
   let apiKey = "00263b074o4ecaf9ct355cdf11faff32";
+
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
 
 function showForecast(response) {
   let forecastArray = response.data.daily;
+
   let forecastHtml = `<div class="row">`;
   let forecast = document.querySelector("#weather-forecast");
-  console.log(forecastArray[0].time);
 
   forecastArray.forEach(function (forecastDay, index) {
     if (index < 5) {
@@ -145,7 +145,7 @@ function formatForecastDay(timestamp) {
     "Friday",
     "Saturday",
   ];
-  console.log(day);
+
   return days[day];
 }
 
