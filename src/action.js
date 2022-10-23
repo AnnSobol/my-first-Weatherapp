@@ -243,3 +243,29 @@ function showPrague(event) {
 }
 let prague = document.querySelector("#prague");
 prague.addEventListener("click", showPrague);
+
+function showForecast() {
+  let forecastHtml = `<div class="row">`;
+  let forecast = document.querySelector("#weather-forecast");
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      ` <div class="card text-white bg-info mb-3 window day-forecast"
+              style="max-width: 10.5rem"
+            >
+              <div class="card-header">${day}</div>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <span class="min">18º </span> / <span class="max">26º</span>
+                </h5>
+                <p class="card-text">🌤</p>
+              </div>
+            </div>
+          `;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecast.innerHTML = forecastHtml;
+}
+showForecast();

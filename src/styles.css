@@ -304,7 +304,9 @@ li {
 }
 
 .about {
-  padding-left: 30px;
+  position: relative;
+  right: -20px;
+  padding-left: 20px;
   text-align: center;
 }
 
@@ -313,4 +315,27 @@ li {
   font-weight: bold;
   padding-right: 0;
   margin-right: 0;
+}
+.card-title {
+  color: rgb(70, 70, 70);
+}
+
+span.max {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+span.min {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  opacity: 0.8;
+}
+#weather-forecast {
+  padding: 0;
+  margin: 0;
+}
+
+div.day-forecast {
+  margin: 20px 15px 0;
 }
